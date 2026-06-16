@@ -1,0 +1,7 @@
+# rank.py uses only the Python standard library (csv, json, argparse,
+# datetime, gzip) — no third-party dependencies are required to reproduce
+# the submission CSV.
+#
+# streamlit is only needed to run the sandbox demo app (app.py), not for
+# producing the actual submission.
+streamlit>=1.32
