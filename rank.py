@@ -521,8 +521,12 @@ def main():
         if final > 0.0:
             scored.append((c, final, breakdown))
 
-    # Sort by score desc, tie-break by candidate_id ascending (per spec
-    # Section 3: "break score ties ... by candidate_id ascending").
+    # Round scores to the precision actually written to the CSV BEFORE
+    # sorting, so the tie-break rule operates on the same values a human
+    # (or the validator) sees in the file. Sort by rounded score desc,
+    # tie-break by candidate_id ascending (per spec Section 3: "break
+    # score ties ... by candidate_id ascending").
+    scored = [(c, round(final, 4), breakdown) for c, final, breakdown in scored]
     scored.sort(key=lambda x: (-x[1], x[0]["candidate_id"]))
 
     top = scored[: args.top_n]
@@ -532,7 +536,7 @@ def main():
         writer.writerow(["candidate_id", "rank", "score", "reasoning"])
         for rank, (c, final, breakdown) in enumerate(top, start=1):
             reasoning = build_reasoning(c, breakdown)
-            writer.writerow([c["candidate_id"], rank, round(final, 4), reasoning])
+            writer.writerow([c["candidate_id"], rank, final, reasoning])
 
     print(f"Wrote {len(top)} ranked candidates to {args.out}")
     print(f"Total candidates scanned: scored {len(scored)} (non-honeypot), "
