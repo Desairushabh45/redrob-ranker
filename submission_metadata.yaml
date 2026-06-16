@@ -1,0 +1,87 @@
+# Redrob Hackathon — Submission Metadata
+# Fill in the [PLACEHOLDER] fields with your actual details before submitting.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "[PLACEHOLDER: your-team-name]"
+
+primary_contact:
+  name: "[PLACEHOLDER: Vrush Full Name]"
+  email: "[PLACEHOLDER: your-email@example.com]"
+  phone: "[PLACEHOLDER: +91-XXXXXXXXXX]"
+
+team_members:
+  - name: "[PLACEHOLDER: Vrush Full Name]"
+    email: "[PLACEHOLDER: your-email@example.com]"
+    role: "ML Engineer"
+  # Add more members here if this is a team submission, e.g.:
+  # - name: "Teammate Name"
+  #   email: "teammate@example.com"
+  #   role: "Data Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "[PLACEHOLDER: https://github.com/YOUR_USERNAME/redrob-ranker]"
+
+sandbox_link: "[PLACEHOLDER: https://YOUR_APP.streamlit.app]"
+# Deploy app.py to Streamlit Community Cloud (or HuggingFace Spaces, Replit,
+# Colab, Docker, Binder — see submission_spec.md Section 10.5).
+
+reproduce_command: "python rank.py --candidates ./data/candidates.jsonl --out ./outputs/submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "[PLACEHOLDER: e.g. Windows 11 laptop / your machine]"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.12.3"
+  os: "[PLACEHOLDER: e.g. Windows 11]"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude to help design the scoring architecture, calibrate honeypot
+  detection and title/skill tiers against the real 100K candidate pool
+  (via exploratory analysis scripts), and write/debug the ranking code.
+  All scoring logic, thresholds, and design decisions were reviewed and
+  validated against the actual dataset before being finalized. No
+  candidate data was sent to any hosted LLM API as part of the ranking
+  pipeline itself — rank.py makes no network calls.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Rule-based hybrid ranker with five weighted components (title/career
+  history, trust-filtered skills, experience profile, location, culture
+  fit) combined with a multiplicative behavioral-availability modifier.
+  Title and skill scoring tiers were calibrated by analyzing frequency
+  distributions across the full 100K pool, not guessed. Honeypot detection
+  uses a single high-precision rule ("expert" proficiency with 0 months of
+  use) chosen after testing several candidate heuristics against the real
+  data — a naive "many expert skills" rule was explicitly rejected because
+  it incorrectly flagged genuinely senior, legitimate ML candidates.
+  Runtime: ~12 seconds for the full 100K pool on a single CPU core, no GPU,
+  no network calls.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
