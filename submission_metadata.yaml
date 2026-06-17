@@ -4,42 +4,36 @@
 # ============================================================================
 # Team identity
 # ============================================================================
-team_name: "[PLACEHOLDER: your-team-name]"
+team_name: "Rushabh Desai"
 
 primary_contact:
-  name: "[PLACEHOLDER: Vrush Full Name]"
-  email: "[PLACEHOLDER: your-email@example.com]"
-  phone: "[PLACEHOLDER: +91-XXXXXXXXXX]"
+  name: "Rushabh Desai"
+  email: "rushabhdesai78@gmail.com"
+  phone: "+91-8152850389"
 
 team_members:
-  - name: "[PLACEHOLDER: Vrush Full Name]"
-    email: "[PLACEHOLDER: your-email@example.com]"
+  - name: "Rushabh Desai"
+    email: "rushabhdesai78@gmail.com"
     role: "ML Engineer"
-  # Add more members here if this is a team submission, e.g.:
-  # - name: "Teammate Name"
-  #   email: "teammate@example.com"
-  #   role: "Data Engineer"
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
-github_repo: "[PLACEHOLDER: https://github.com/YOUR_USERNAME/redrob-ranker]"
+github_repo: "https://github.com/Desairushabh45/redrob-ranker"
 
-sandbox_link: "[PLACEHOLDER: https://YOUR_APP.streamlit.app]"
-# Deploy app.py to Streamlit Community Cloud (or HuggingFace Spaces, Replit,
-# Colab, Docker, Binder — see submission_spec.md Section 10.5).
+sandbox_link: "https://redrob-ranker-dlhykzxcuufu6kiqwjrcjb.streamlit.app"
 
-reproduce_command: "python rank.py --candidates ./data/candidates.jsonl --out ./outputs/submission.csv"
+reproduce_command: "py -3.11 rank.py --candidates data/candidates.jsonl --out outputs/submission.csv"
 
 # ============================================================================
 # Compute environment
 # ============================================================================
 compute:
-  platform: "[PLACEHOLDER: e.g. Windows 11 laptop / your machine]"
+  platform: "Windows laptop"
   cpu_cores: 4
   ram_gb: 16
-  python_version: "3.12.3"
-  os: "[PLACEHOLDER: e.g. Windows 11]"
+  python_version: "3.11.9"
+  os: "Windows"
   uses_gpu_for_inference: false
   has_network_during_ranking: false
   pre_computation_required: false
